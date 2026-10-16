@@ -1,0 +1,7 @@
+const test=require('node:test'),assert=require('node:assert/strict');
+const {JSDOM}=require('jsdom');const E=require('../job-matcher/extractors.js');
+test('BOSS 新卡片：标题在锚点自身，字段在同卡片，特殊字体薪资保留未知',()=>{
+const doc=new JSDOM(`<div class="job-card-wrap"><li class="job-card-box"><div class="job-info"><a class="job-name" href="/job_detail/example123.html">新媒体运营</a><span class="job-salary">\uE033\uE031K</span><ul class="tag-list"><li>3-5年</li><li>本科</li><li>内容策划</li></ul></div><div class="job-card-footer"><span class="boss-name">虚构公司</span><span class="company-location">北京·朝阳区</span></div></li></div><a href="/job_detail/example123.html">重复链接</a>`).window.document;
+const r=E.extract(doc,'boss','https://www.zhipin.com/web/geek/jobs');assert.equal(r.status,'ok');assert.equal(r.jobs.length,1);const j=r.jobs[0];assert.equal(j.title,'新媒体运营');assert.equal(j.company,'虚构公司');assert.equal(j.city,'北京·朝阳区');assert.equal(j.education,'本科');assert.equal(j.experience,'3-5年');assert.equal(j.salary,'');assert.match(j.availability,/特殊字体/);assert.match(j.description,/内容策划/);
+});
+test('BOSS 旧卡片与明文薪资仍可读',()=>{const doc=new JSDOM(`<div class="job-card-wrapper"><a href="/job_detail/old123.html"><span class="job-name">运营</span></a><span class="salary">10-15K</span><span class="company-name">测试公司</span><span class="job-area">北京</span></div>`).window.document;const j=E.extract(doc,'boss','https://www.zhipin.com/web/geek/job').jobs[0];assert.equal(j.title,'运营');assert.equal(j.salary,'10-15K');assert.equal(j.company,'测试公司')});

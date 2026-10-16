@@ -1,0 +1,72 @@
+{
+  "project": "岗位匹配工作台 0.7.2",
+  "checked_at": "2026-10-15",
+  "stack": "Electron 42.4.0 / 原生 HTML CSS JavaScript",
+  "references": [
+    {
+      "source_url": null,
+      "repository_url": null,
+      "revision": null,
+      "commit_sha": null,
+      "license_file": null,
+      "local_files": [
+        "job-matcher/index.html",
+        "job-matcher/style.css",
+        "job-matcher/app.js",
+        "job-matcher/workspace.css"
+      ],
+      "sha256": {
+        "job-matcher/index.html": "7e1955c4821c50a7b0db5e84b463d4fe184c0694091f0c9615b0885799a13c4d",
+        "job-matcher/style.css": "d4126cb073a409d716627f85723c199fce799061a8a333d80e283515d4bc5a05",
+        "job-matcher/app.js": "7346d9cb1a8cd0ea50d96365ea8cf291b053c7575217dd3ab9b9e8708c755846",
+        "job-matcher/workspace.css": "246fd219a0226266eab7135f8ab40290c2a68725307d667265428947af703075"
+      },
+      "mode": "independent-implementation",
+      "decision": "selected",
+      "modifications": "未复制第三方源码；原生 HTML/CSS/JS 独立实现，保留已有 Electron 与平台读取架构。",
+      "accessibility": "原生表单控件、显式标签、键盘焦点、文字状态、prefers-reduced-motion；主操作与正文对比另有本地计算记录。",
+      "verification": "0.6 Electron 实测见 密度与配色说明.md；沿用已核验参考，未新增第三方代码。",
+      "site": "Aceternity UI",
+      "component": "Bento Grid",
+      "author": "Aceternity UI；具体作者未核验",
+      "component_url": "https://ui.aceternity.com/components/bento-grid",
+      "official_evidence_url": "https://ui.aceternity.com/components/bento-grid",
+      "license_name": "本次未核验源码许可，未复制代码",
+      "license_url": null,
+      "reason": "借鉴卡片分区、留白和标题层级，用于简历/条件/来源区域。拒绝交错大图片、装饰性 skeleton 与框架迁移，避免挤占工作区。"
+    },
+    {
+      "source_url": null,
+      "repository_url": null,
+      "revision": null,
+      "commit_sha": null,
+      "license_file": null,
+      "local_files": [
+        "job-matcher/index.html",
+        "job-matcher/style.css",
+        "job-matcher/app.js",
+        "job-matcher/workspace.css"
+      ],
+      "sha256": {
+        "job-matcher/index.html": "7e1955c4821c50a7b0db5e84b463d4fe184c0694091f0c9615b0885799a13c4d",
+        "job-matcher/style.css": "d4126cb073a409d716627f85723c199fce799061a8a333d80e283515d4bc5a05",
+        "job-matcher/app.js": "7346d9cb1a8cd0ea50d96365ea8cf291b053c7575217dd3ab9b9e8708c755846",
+        "job-matcher/workspace.css": "246fd219a0226266eab7135f8ab40290c2a68725307d667265428947af703075"
+      },
+      "mode": "independent-implementation",
+      "decision": "selected",
+      "modifications": "未复制第三方源码；原生 HTML/CSS/JS 独立实现，保留已有 Electron 与平台读取架构。",
+      "accessibility": "原生表单控件、显式标签、键盘焦点、文字状态、prefers-reduced-motion；主操作与正文对比另有本地计算记录。",
+      "verification": "0.6 Electron 实测见 密度与配色说明.md；沿用已核验参考，未新增第三方代码。",
+      "site": "Uiverse",
+      "component": "Button / massive-insect-65",
+      "author": "adamgiebl (Adam Giebl)",
+      "component_url": "https://uiverse.io/adamgiebl/massive-insect-65",
+      "official_evidence_url": "https://uiverse.io/adamgiebl/massive-insect-65",
+      "license_name": "MIT（组件页展示，2026 adamgiebl）",
+      "license_url": "https://opensource.org/license/mit",
+      "reason": "借鉴按下反馈、边框与微弱阴影，用于查找和岗位操作。独立实现 1px 按压，不采用参考的等宽字体、蓝色重阴影与 2px 悬浮位移。"
+    }
+  ],
+  "visual_revision": "0.6.2：保留现有界面和动效，新增国聘来源及暗红色标；58 尚未接入。"
+}

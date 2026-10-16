@@ -1,0 +1,9 @@
+{
+  "name": "job-match-suite",
+  "version": "0.7.2",
+  "private": true,
+  "main": "desktop/launcher.cjs",
+  "scripts": {
+    "test": "node --test tests/*.test.cjs"
+  }
+}

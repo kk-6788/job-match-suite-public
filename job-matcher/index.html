@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; worker-src 'self' blob:; connect-src 'none'; object-src 'none'; base-uri 'none'">
+  <title>岗位匹配工作台</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="workspace.css">
+</head>
+<body>
+  <a class="skip-link" href="#results-title">跳到岗位结果</a>
+  <header class="app-header">
+    <div class="brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><div><h1>岗位匹配工作台</h1><span class="eyebrow">CAREER / 岗位探索</span></div></div>
+    <div class="header-meta"><span class="version">独立工具 · 0.7.2</span><span id="mode" class="mode">简历在本机解析</span></div>
+  </header>
+  <main>
+    <section class="workspace-heading"><div class="result-intro"><div class="eyebrow">你的经历，值得更合适的机会</div><h2 id="results-title" tabindex="-1">下一站，<span>由你选择。</span></h2><p>一份简历，多个招聘来源。把匹配依据和投递入口，整理在一起。</p></div>
+</section>
+    <section class="workspace-editor"><div class="workspace-summary"><div><span class="workspace-caption">我的求职档案</span><p id="profile-summary">导入简历，或直接填写你的求职条件</p></div><button id="edit-settings" aria-expanded="true" aria-controls="workspace-body">收起设置 <span aria-hidden="true">−</span></button></div><div id="workspace-body" class="workspace-body"><div class="workspace-inner">
+    <aside aria-label="简历与求职设置">
+      <section class="panel import-panel" aria-labelledby="import-title">
+        <div class="section-title"><span class="step">01</span><h2 id="import-title">导入你的简历</h2><span class="optional">也可直接填写</span></div>
+        <label class="file-label" for="resume-file"><span class="upload-symbol" aria-hidden="true">↑</span><strong>选择一份简历</strong><span>PDF、Word、TXT 或工作台 JSON · 最大 10 MB</span><input id="resume-file" type="file" accept=".pdf,.docx,.txt,.json"></label>
+        <details class="paste-details"><summary>或粘贴简历文字</summary><label for="resume-text" class="sr-only">简历文字</label><textarea id="resume-text" rows="6" placeholder="粘贴简历文字…"></textarea><button id="parse-text" class="small-button">读取文字</button></details>
+        <p id="import-message" class="import-message" role="status" aria-live="polite">已在简历工作台编辑？可从「找匹配岗位」入口带入。</p>
+      </section>
+      <section class="panel" aria-labelledby="prefs-title">
+        <div class="section-title"><span class="step">02</span><h2 id="prefs-title">核对求职条件</h2></div>
+        <label for="role">目标岗位 <span class="required">必填</span></label><input id="role" maxlength="100" placeholder="例如：新媒体运营" list="roles" required><datalist id="roles"></datalist>
+        <div class="pair"><div><label for="city">期望城市</label><input id="city" maxlength="50" placeholder="不限城市"></div><div><label for="salary">最低月薪 / 元</label><input id="salary" type="number" min="0" max="1000000" placeholder="不限薪资"></div></div>
+        <div class="pair"><div><label for="education">学历</label><select id="education"><option value="">待核对</option><option>初中及以下</option><option>高中</option><option>中专</option><option>大专</option><option>本科</option><option>硕士</option><option>博士</option></select></div><div><label for="experience">工作年限 / 年</label><input id="experience" type="number" min="0" max="60" step="0.1" placeholder="未知请留空"></div></div>
+        <label for="skills">擅长技能 <span class="optional">用逗号分隔</span></label><textarea id="skills" rows="2" placeholder="例如：Excel，内容策划"></textarea>
+        <p class="field-note">学历低一个层级、年限少不超过 2 年的岗位仍保留，并提示差距；缺失信息待核对。</p>
+      </section>
+      <section class="panel" aria-labelledby="platform-title">
+        <div class="section-title"><span class="step">03</span><h2 id="platform-title">选择招聘来源</h2><span id="source-count" class="optional">已选 4 个</span></div>
+        <div class="source-picks" role="group" aria-label="招聘平台">
+          <label><input type="checkbox" value="boss" checked><span>BOSS 直聘</span></label><label><input type="checkbox" value="liepin" checked><span>猎聘</span></label>
+          <label><input type="checkbox" value="zhilian" checked><span>智联招聘</span></label><label><input type="checkbox" value="51job" checked><span>前程无忧</span></label>
+          <label><input type="checkbox" value="guopin"><span>国聘</span></label><label><input type="checkbox" value="yupao"><span>鱼泡直聘</span></label><label><input type="checkbox" value="lagou"><span>拉勾 <small>试读</small></span></label><label><input type="checkbox" value="shixiseng"><span>实习僧 <small>实习</small></span></label>
+          <label><input type="checkbox" value="ncss"><span>国家大学生就业服务平台</span></label><label><input type="checkbox" value="yingjiesheng"><span>应届生求职网 <small>试读</small></span></label>
+        </div>
+        <details class="company-details"><summary>添加公司招聘官网</summary><label for="company-urls">招聘页网址 <span class="optional">最多 3 个，每行一个</span></label><textarea id="company-urls" rows="3" placeholder="https://公司官网/招聘页"></textarea><label class="check"><input type="checkbox" value="discovery" id="discovery">同时查找公司招聘官网</label></details>
+        <p class="field-note">需要登录或验证时，可打开来源处理后继续读取。拉勾、应届生求职网登录后的读取尚待验证。大学生平台按全国关键词搜索，部分地区只标注到省，请查看详情。国聘每次最多读取 10 个。国聘和鱼泡按全国关键词搜索，城市在本地筛选；可打开来源调整城市后继续读取。</p>
+      </section>
+    </aside>
+    </div></div></section>
+    <section class="launch-bar" aria-label="开始查找">        <div class="search-controls"><button id="search" class="primary"><span class="search-icon" aria-hidden="true"></span><span id="search-label">查找匹配岗位</span></button><button id="cancel" class="cancel-button" hidden>停止查找</button></div>
+        <div class="search-status" id="search-status" data-tone="idle"><span class="status-dot" aria-hidden="true"></span><p id="search-message" role="status" aria-live="polite">核对上方条件后，开始查找。</p></div>
+</section>
+    <article aria-labelledby="results-title">
+      <section class="source-section" id="source-section" hidden aria-labelledby="source-title"><div class="subheading"><h2 id="source-title">来源进度</h2><span id="source-summary"></span></div><div id="sources" class="sources" aria-label="来源读取状态"></div></section>
+      <section id="candidates" class="panel" hidden><h2>候选公司招聘页</h2><p class="muted">选择招聘页后，重新查找以读取具体岗位。</p><div id="candidate-list"></div></section>
+      <section class="ai-panel" aria-label="可选 AI 精排">
+        <div class="ai-heading"><div><label class="check"><input id="ai-enabled" type="checkbox">AI 精排 <span class="optional">可选</span></label><p class="field-note">先规则筛选，再分析前 10 个候选。未开启时完全使用本地规则。</p></div><button id="ai-prepare" disabled>预览分析内容 ↗</button></div>
+        <div id="ai-settings" hidden><div class="ai-config"><div><label for="ai-url">服务地址</label><input id="ai-url" type="url" placeholder="https://你的服务地址/v1" autocomplete="off"></div><div><label for="ai-model">模型名称</label><input id="ai-model" maxlength="150" placeholder="填写服务支持的模型名" autocomplete="off"></div><div><label for="ai-key">API 密钥 <span class="optional">本地模型可留空</span></label><input id="ai-key" type="password" autocomplete="off" placeholder="仅保留在本次窗口"></div></div>
+        <p class="field-note"><button id="ai-local-service" type="button" class="small-button">使用本机 DeepSeek</button> 读取已有 Hermes 配置或环境变量，仅在内存使用。也可手动填写兼容 Chat Completions 服务；设置不保存。AI 只使用已读到的岗位文字，可在卡片补充完整要求。</p>
+        <div id="ai-preview" hidden><p id="ai-destination"></p><p class="field-note">以下是将发送的内容，已排除独立姓名、联系方式字段；经历文字仍可能含个人信息，请核对。岗位描述可能不完整，AI 结论仅供比较。</p><pre id="ai-payload" tabindex="0"></pre><button id="ai-run">发送并精排</button><button id="ai-dismiss">返回修改</button></div>
+        <button id="ai-stop" hidden>停止精排</button></div><p id="ai-status" role="status" aria-live="polite">AI 未开启 · 本地规则排序</p>
+      </section>
+      <div class="results-toolbar"><div><h2>岗位清单 <span id="count">0 / 0</span></h2><p class="field-note"><span id="ranking-label">按本地规则排序</span> · 分数不代表录用概率</p></div><button id="export" class="small-button" disabled>导出清单 <span aria-hidden="true">↗</span></button></div>
+      <div class="results-tools"><label class="check"><input id="show-conflicts" type="checkbox">同时查看条件不符的岗位</label><span id="filter-summary">信息以岗位详情页为准</span></div>
+      <div id="jobs" aria-busy="false"><div class="empty"><div class="match-illustration" aria-hidden="true"><div class="document-shape"><b></b><i></i><i></i><i></i></div><div class="target-shape"><span>↗</span></div></div><span class="empty-kicker">准备好你的下一步</span><strong>让合适的岗位，<br>从这里浮现。</strong><p>导入简历并核对条件，即可查找具体岗位。<br>匹配依据、待确认项和投递入口会一起呈现。</p><div class="empty-steps"><span>01 核对条件</span><i aria-hidden="true">→</i><span>02 查找岗位</span><i aria-hidden="true">→</i><span>03 查看并投递</span></div></div></div>
+      <p class="results-footnote">岗位结果保留在当前窗口，关闭前可导出清单。投递由你在招聘网站完成。</p>
+    </article>
+  </main>
+  <script src="vendor/pdf.min.js"></script><script src="vendor/mammoth.js"></script><script src="shared/resume-core.js"></script><script src="shared/resume-services.js"></script><script src="core.js"></script><script src="app.js"></script>
+</body>
+</html>

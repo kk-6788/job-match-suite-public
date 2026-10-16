@@ -1,0 +1,34 @@
+# Runtime credentials and user data
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+node_modules/
+work/
+outputs/
+dist/
+release/
+releases/
+coverage/
+*.log
+*.db
+*.sqlite*
+*.zip
+*.exe
+*.pdf
+*.docx
+userData/
+User Data/
+Sessions/
+Session Storage/
+Local Storage/
+IndexedDB/
+Cache/
+Cookies*
+*.har
+*.heapsnapshot
+.DS_Store
+Thumbs.db

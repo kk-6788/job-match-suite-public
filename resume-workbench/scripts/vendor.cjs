@@ -1,0 +1,2 @@
+const fs=require('node:fs'),path=require('node:path');
+for(const [pkg,source,dest] of [['docx','dist/index.iife.js','docx.js'],['mammoth','mammoth.browser.min.js','mammoth.js'],['html2canvas','dist/html2canvas.min.js','html2canvas.js']]){fs.copyFileSync(path.join('node_modules',pkg,source),path.join('vendor',dest));const license=['LICENSE','LICENSE.md','LICENSE.txt'].find(p=>fs.existsSync(path.join('node_modules',pkg,p)));if(license)fs.copyFileSync(path.join('node_modules',pkg,license),path.join('vendor',pkg+'-LICENSE.txt'));}
